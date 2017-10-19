@@ -1,0 +1,32 @@
+
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script type="text/javascript" src="assets/js/jquery.js"></script>
+<script type="text/javascript">
+
+	//var NAV_PILL_ID = "home";
+
+
+	$(document).ready(
+			function() {
+				//Initialize NavBar
+				if (NAV_PILL_ID == 'home')
+					toggleActiveState('home');
+				else if (NAV_PILL_ID == 'signIn')
+					toggleActiveState('signIn');
+				else if (NAV_PILL_ID == 'about')
+					toggleActiveState('about');
+				else if (NAV_PILL_ID == 'contact')
+					toggleActiveState('contact');
+			});
+
+// 	$('ul.nav.nav-pills li a').click(function() {
+// 		$(this).parent().addClass('active').siblings().removeClass('active');
+// 	});
+
+	function toggleActiveState(navPillID) {
+		$("#navPills li").removeClass("active");
+		$("#" + navPillID).attr('class', 'active');
+	}
+</script>

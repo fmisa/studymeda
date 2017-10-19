@@ -1,0 +1,32 @@
+<%@ page import="ca.studymedia.web.ClientKeys" %>
+
+<%@ include file="/WEB-INF/jsp/tiles/taglib.jspf" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
+<%
+  String errorDescription = (String) request.getAttribute(ClientKeys.KEY_ERROR_MESSAGE);
+  if (errorDescription != null) {
+%>
+Error: <%=errorDescription%>
+<%
+  }
+%>
+
+<form name="loginform" action="signIn.html" method="post">
+<table align="left" border="0" cellspacing="0" cellpadding="3">
+    <tr>
+        <td>Username:</td>
+        <td><input id="username" name="username" type="text" maxlength="30"></td>
+    </tr>
+    <tr>
+        <td>Password:</td>
+        <td><input id="password" name="password" type="password" maxlength="30"></td>
+    </tr>
+    <tr>
+        <td colspan="2" align="left"><input type="checkbox" name="remember"><font size="2">Remember Me</font></td>
+    </tr>
+    <tr>
+        <td colspan="2" align="right"><input type="submit" name="submit" value="Login"></td>
+    </tr>
+</table> 
+</form>

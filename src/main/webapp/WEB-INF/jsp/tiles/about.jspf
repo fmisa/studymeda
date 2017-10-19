@@ -1,0 +1,9 @@
+<%@ include file="/WEB-INF/jsp/tiles/taglib.jspf" %>
+
+TEST ABOUT
+
+<script type="text/javascript">
+
+	var NAV_PILL_ID = "about";
+	
+</script>

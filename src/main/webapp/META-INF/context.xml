@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Context path="/StudyMedia" docBase="StudyMedia" debug="9" reloadable="true">
+  <Logger className="org.apache.catalina.logger.FileLogger"
+    directory="logs" prefix="StudyMedia_log." suffix=".log" timestamp="true"/>
+    
+    <!--
+    <Resource
+        name="jdbc/studymedia"
+        auth="Container"
+        type="javax.sql.DataSource"
+        factory="org.logicalcobwebs.proxool.ProxoolDataSource"
+        proxool.alias="studymedia"
+        user="root"
+        password="Nexus600"
+        delegateProperties="foo=bar"
+        proxool.driver-url="jdbc:mysql://localhost:3306/studymedia?autoReconnect=true"
+        proxool.driver-class="com.mysql.jdbc.Driver"
+        proxool.minimum-connection-count="2"
+        proxool.maximum-connection-count="20"
+        proxool.maximum-connection-lifetime="18000000"
+        proxool.statistics="1m,15m,1d"
+        proxool.statistics-log-level="WARN"
+        proxool.fatal-sql-exception="Connection is closed,SQLSTATE=08003,Error opening socket. SQLSTATE=08S01,SQLSTATE=08S01"
+        proxool.fatal-sql-exception-wrapper-class="org.logicalcobwebs.proxool.FatalRuntimeException"
+        proxool.verbose="false"
+    />
+     -->
+     
+  <Resource name="jdbc/studymedia" auth="Container" type="javax.sql.DataSource"
+               maxActive="50" maxIdle="30" maxWait="10000"
+               username="root" password="Nexus600" 
+               driverClassName="com.mysql.jdbc.Driver"
+               url="jdbc:mysql://localhost:3306/studymedia"/>    
+    
+    <!--   Additional:
+    		proxool.house-keeping-test-sql="select sysdate from dual" -->
+
+ <Realm className="org.apache.catalina.realm.DataSourceRealm" debug="99" 
+	localDataSource="true"
+	dataSourceName="jdbc/studymedia"
+	userTable="user" 
+	userNameCol="login" 
+	userCredCol="password"
+	userRoleTable="user" 
+	roleNameCol="role"/>
+
+	<!--   Additional:
+			digest="MD5" -->
+</Context>

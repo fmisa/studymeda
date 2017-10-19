@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="landingPage.definition" template="/WEB-INF/jsp/layoutLandingPage.jsp">
+		<put-attribute name="title" value="Study Media" />
+		<put-attribute name="header" value="/WEB-INF/jsp/tiles/headerLandingPage.jspf" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/jsp/tiles/footer.jspf" />
+		<put-attribute name="javascript" value="/WEB-INF/jsp/tiles/javascript.jspf" />
+	</definition>
+	
+	<definition name="mediaAsset.definition" template="/WEB-INF/jsp/layoutMediaAsset.jsp">
+		<put-attribute name="title" value="Study Media" />
+		<put-attribute name="header" value="/WEB-INF/jsp/tiles/headerLandingPage.jspf" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/jsp/tiles/footer.jspf" />
+		<put-attribute name="javascript" value="/WEB-INF/jsp/tiles/javascript.jspf" />
+	</definition>	
+
+	<definition name="signIn" extends="landingPage.definition">
+		<put-attribute name="title" value="Study Media - Sign In" />
+		<put-attribute name="body" value="/WEB-INF/jsp/tiles/login.jspf" />
+	</definition>
+	
+	<definition name="signUp" extends="landingPage.definition">
+		<put-attribute name="title" value="Study Media - Sign Up" />
+		<put-attribute name="body" value="/WEB-INF/jsp/tiles/signUp.jspf" />
+	</definition>
+	 
+	<definition name="about" extends="landingPage.definition">
+		<put-attribute name="title" value="Study Media - About" />
+		<put-attribute name="body" value="/WEB-INF/jsp/tiles/about.jspf" />
+	</definition>
+	
+	<definition name="contact" extends="landingPage.definition">
+		<put-attribute name="title" value="Study Media - Contact" />
+		<put-attribute name="body" value="/WEB-INF/jsp/tiles/contact.jspf" />
+	</definition>
+	
+	<definition name="landingPage" extends="landingPage.definition">
+		<put-attribute name="title" value="Study Media" />
+		<put-attribute name="body" value="/WEB-INF/jsp/tiles/bodyLandingPage.jspf" />
+	</definition>
+	
+	<definition name="mediaAssetPage" extends="mediaAsset.definition">
+		<put-attribute name="title" value="Study Media Resources" />
+		<put-attribute name="body" value="/WEB-INF/jsp/tiles/bodyMediaAssets.jspf" />
+	</definition>
+	
+	<definition name="error" extends="landingPage.definition">
+		<put-attribute name="title" value="Study Media - Error Page" />
+		<put-attribute name="body" value="/WEB-INF/jsp/tiles/error.jspf" />
+	</definition>
+	
+</tiles-definitions>

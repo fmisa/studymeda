@@ -1,0 +1,65 @@
+<%@ include file="/WEB-INF/jsp/tiles/taglib.jspf"%>
+
+<shiro:lacksRole name="dev">
+    Sorry, you are not allowed to view this page
+</shiro:lacksRole>
+
+<shiro:hasRole name="dev">
+
+TEST CONTACT
+
+<h3>Roles you have</h3>
+
+	<p>
+		<shiro:hasRole name="admin">admin<br />
+		</shiro:hasRole>
+		<shiro:hasRole name="guest">guest<br />
+		</shiro:hasRole>
+		<shiro:hasRole name="dev">dev<br />
+		</shiro:hasRole>
+	</p>
+
+	<h3>Roles you DON'T have</h3>
+
+	<p>
+		<shiro:lacksRole name="admin">admin<br />
+		</shiro:lacksRole>
+		<shiro:lacksRole name="guest">guest<br />
+		</shiro:lacksRole>
+		<shiro:lacksRole name="dev">dev<br />
+		</shiro:lacksRole>
+	</p>
+
+
+	<br />
+
+	<shiro:guest>
+    Hi there!  GUEST
+</shiro:guest>
+
+	<br />
+
+	<shiro:user>
+    Hi there!  USER
+</shiro:user>
+
+	<br />
+
+	<shiro:authenticated>
+    AUTHENTICATED as: <shiro:principal />
+	</shiro:authenticated>
+
+	<br />
+
+	<shiro:hasAnyRoles name="admin, guest, dev">
+    You are either the admin, guest or dev roles.
+</shiro:hasAnyRoles>
+
+	<br />
+
+</shiro:hasRole>
+
+
+<script type="text/javascript">
+	var NAV_PILL_ID = "contact";
+</script>

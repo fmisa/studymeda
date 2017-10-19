@@ -1,0 +1,12 @@
+<%@ include file="/WEB-INF/jsp/tiles/taglib.jspf" %>
+
+<%@ page import="ca.studymedia.web.ClientKeys" %>
+
+<%
+  String errorDescription = (String) request.getAttribute(ClientKeys.KEY_ERROR_MESSAGE);
+  if (errorDescription!=null) {
+%>
+<%=errorDescription%>
+<%
+  }
+%>

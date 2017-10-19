@@ -1,0 +1,54 @@
+<%@ page import="ca.studymedia.web.ClientKeys" %>
+
+<%@ include file="/WEB-INF/jsp/tiles/taglib.jspf" %>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="shortcut icon" href="assets/ico/favicon.png">
+	<title><spring:message code="general.studymedia.name"/></title>
+	
+	<!-- Bootstrap core CSS -->
+	<link href="dist/css/bootstrap.css" rel="stylesheet">
+	
+	<!-- Custom styles for this template -->
+	<link href="assets/css/jumbotron-narrow.css" rel="stylesheet">
+	
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	      <script src="assets/js/html5shiv.js"></script>
+	      <script src="assets/js/respond.min.js"></script>
+	    <![endif]-->
+</head>
+
+<div class="header">
+	<ul id="navPills" class="nav nav-pills pull-right">
+		<li id="home"><a href="landingPage.html" ><spring:message code="general.home.name"/></a></li>
+	    <shiro:authenticated>
+	        <li id="signOut"><a href="<%=ClientKeys.PAGE_SIGNOUT%><%=ClientKeys.PAGE_DEFAULT_EXTENSION%>" ><spring:message code="general.logout.signout"/></a></li>
+	    </shiro:authenticated>
+	    <shiro:notAuthenticated>
+	        <li id="signIn"><a href="<%=ClientKeys.PAGE_SIGNIN%><%=ClientKeys.PAGE_DEFAULT_EXTENSION%>" ><spring:message code="general.login.name"/></a></li>
+	    </shiro:notAuthenticated>
+		<li id="about"><a href="about.html" ><spring:message code="general.about.name"/></a></li>
+		<li id="contact"><a href="contact.html" ><spring:message code="general.contact.name"/></a></li>
+	</ul>
+	<h3 class="text-muted"><spring:message code="general.studymedia.name"/></h3>
+</div>
+
+<%--
+onclick="toggleActiveState('home');" data-toggle="tab"
+onclick="toggleActiveState('signIn');" data-toggle="tab"
+onclick="toggleActiveState('about');" data-toggle="tab"
+onclick="toggleActiveState('contact');" data-toggle="tab"
+ --%>
+
+<div class="jumbotron">
+	<h1><spring:message code="general.studymedia.free.resources"/></h1>
+	<p class="lead"><spring:message code="general.studymedia.lead"/></p>
+	<p>
+		<a class="btn btn-lg btn-success" href="<%=ClientKeys.PAGE_SIGNUP%><%=ClientKeys.PAGE_DEFAULT_EXTENSION%>"><spring:message code="general.studymedia.signup.today"/></a>
+	</p>
+</div>

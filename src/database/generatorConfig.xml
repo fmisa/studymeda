@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<classPathEntry
+		location="C:/dev/dev_downloads/eclipsePlugins/mybatis-generator-core-1.3.2-bundle/mybatis-generator-core-1.3.2/lib/mysql-connector-java-5.1.18.jar" />
+	<context id="StudyMediaTables" defaultModelType="flat"
+		targetRuntime="MyBatis3">
+
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://localhost/studymedia" userId="root"
+			password="Nexus600" />
+
+		<javaModelGenerator targetPackage="ca.studymedia.model"
+			targetProject="src">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<sqlMapGenerator targetPackage="ca.studymedia.dao.mybatis.xml"
+			targetProject="src">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="ca.studymedia.dao.mybatis.client" targetProject="src">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<table tableName="category" />
+		<table tableName="certification" />
+		<table tableName="comments" />
+		<table tableName="material" />
+		<table tableName="materialactivity" />
+		<table tableName="resource" />
+		<table tableName="resourcesupport" />
+		<table tableName="subtype" />
+		<table tableName="type" />
+		<table tableName="user" />
+	</context>
+
+</generatorConfiguration>

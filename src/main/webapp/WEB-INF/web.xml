@@ -1,0 +1,152 @@
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+
+
+	<!-- ####################################################### -->
+	<!-- BASE GENERAL CONFIGURATION -->
+	<!-- ####################################################### -->
+	<display-name>ca.studymedia - misaStudyMedia</display-name>
+	
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	
+	<servlet-mapping>
+	    <servlet-name>jsp</servlet-name>
+	    <url-pattern>*.jspf</url-pattern>
+	</servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>/static/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.png</url-pattern>
+        <url-pattern>*.js</url-pattern>
+        <url-pattern>*.css</url-pattern>
+        <url-pattern>*.ico</url-pattern>
+    </servlet-mapping>
+
+	<error-page>
+		<exception-type>java.lang.Throwable</exception-type>
+		<location>/error.html</location>
+	</error-page>
+	
+
+	<!-- ####################################################### -->
+	<!-- FILTERS CONFIGURATION -->
+	<!-- ####################################################### -->	
+    <filter>
+        <filter-name>encoding-filter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>encoding-filter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>	 
+	 
+	 
+	<!-- ####################################################### -->
+	<!-- SHIRO SECURITY CONFIGURATION -->
+	<!-- ####################################################### -->
+	<filter>
+		<filter-name>shiroFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		<init-param>
+			<param-name>targetFilterLifecycle</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	
+	
+	<!-- Make sure any request you want accessible to Shiro is filtered. /* catches all -->
+	<!-- requests.  Usually this filter mapping is defined first (before all others) to -->
+	<!-- ensure that Shiro works in subsequent filters in the filter chain:             -->
+	<filter-mapping>
+	    <filter-name>shiroFilter</filter-name>
+	    <url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+			
+	<!-- ####################################################### -->
+	<!-- SPRING LISTENER CONFIGURATION -->
+	<!-- ####################################################### -->	
+	<listener>
+		<listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+	</listener>
+	
+    <context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath:contextApplication.xml,
+			classpath:contextStudyMedia.xml,
+			classpath:contextShiro.xml
+		</param-value>
+	</context-param>
+	
+	
+	<!-- ####################################################### -->
+	<!-- SPRING SERVLET MAPPING -->
+	<!-- ####################################################### -->
+	<servlet>
+		<servlet-name>spring</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:spring-servlet.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- Maps spring servlet *.html -->
+	<servlet-mapping>
+		<servlet-name>spring</servlet-name>
+		<url-pattern>*.html</url-pattern>
+	</servlet-mapping>
+	
+
+	<!-- DWR Shared Dispatcher config /dwr/** -->
+	<servlet-mapping>
+		<servlet-name>spring</servlet-name>
+		<url-pattern>/dwr/*</url-pattern>
+	</servlet-mapping>	
+	
+
+	<!-- ####################################################### -->
+	<!-- DWR - DIRECT WEB REMOTING - SERVLET MAPPING -->
+	<!-- ####################################################### 
+	
+	NOTE: SEE: contextApplication.xml: DWR SHARED CONTEXT AND DISPATCHERS CONFIG
+	<servlet>
+		<servlet-name>dwr</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:dwrContext.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>dwr</servlet-name>
+		<url-pattern>/dwr/*</url-pattern>
+	</servlet-mapping>		
+	-->
+
+</web-app>
