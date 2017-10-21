@@ -1,0 +1,18 @@
+
+
+Basic Build:
+mvn clean process-resources compile
+
+Run Liquibase:
+    mvn -Ddb.host=127.0.0.1 '-Ddb.name=studymedia' -Ddb.port=3306 -Ddb.username=root -Ddb.password=none liquibase:update
+    mvn -Ddb.host=127.0.0.1 '-Ddb.name=studymedia' -Ddb.port=3306 -Ddb.username=root -Ddb.password=Nexus600 clean process-resources
+    mvn -Ddb.host=127.0.0.1 '-Ddb.name=studymedia' -Ddb.port=3306 -Ddb.username=root -Ddb.password=Nexus600 clean process-resources liquibase:update
+
+Run MyBatis Generator:
+    mvn mybatis-generator:generate
+    mvn -U -Ddb.host=127.0.0.1 -Ddb.name=studymedia -Ddb.port=3306 -Ddb.username=root -Ddb.password=Nexus600 mybatis-generator:generate
+
+
+
+
+

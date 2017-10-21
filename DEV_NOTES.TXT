@@ -1,0 +1,50 @@
+
+Create Github:
+https://github.com/fmisa/studymeda.git
+
+Links Licensing:
+https://choosealicense.com/licenses/
+https://en.wikipedia.org/wiki/Comparison_of_free_and_open-source_software_licenses
+Go with None - protected copyright implied.
+
+DEV NOTES:
+Create Root Parent
+mvn archetype:generate \
+-DarchetypeGroupId=org.codehaus.mojo.archetypes \
+-DarchetypeArtifactId=pom-root \
+-DarchetypeVersion=RELEASE \
+-DgroupId=decipher \
+-DartifactId=studymedia \
+-Dversion=1.0.0-SNAPSHOT \
+-DinteractiveMode=false
+
+
+Create DB Module
+mvn archetype:generate \
+-DarchetypeGroupId=org.apache.maven.archetypes \
+-DarchetypeArtifactId=maven-archetype-quickstart \
+-DarchetypeVersion=RELEASE \
+-DgroupId=decipher \
+-DartifactId=database \
+-Dversion=1.0.0-SNAPSHOT \
+-DinteractiveMode=false
+
+
+mvn archetype:generate \
+-DarchetypeGroupId=org.apache.maven.archetypes \
+-DarchetypeArtifactId=maven-archetype-quickstart \
+-DarchetypeVersion=RELEASE \
+-DgroupId=misa \
+-DartifactId=service \
+-Dversion=1.0.0-SNAPSHOT \
+-DinteractiveMode=false
+
+
+Phases Goals
+mvn fr.jcgay.maven.plugins:buildplan-maven-plugin:list -Dbuildplan.tasks=clean,deploy
+
+
+Testing Links:
+http://localhost:8080/StudyMedia/dwr/test/studyMediaService
+http://localhost:8080/StudyMedia
+http://localhost:8080/StudyMedia/landingPage.html
